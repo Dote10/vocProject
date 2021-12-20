@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/basic :: setContent(~{this :: content})}">
+
+	<th:block th:fragment="content">
+	
+	<div class="main-table">
+	  <h1>Penalty Edit</h1>
+		<form action="updatePenalty" name="updateSingleVoc" method="post">
+			<table border="1" cellpadding="0" cellspacing="0">
+				<tbody th:each="dto : ${pen}">
+					<tr>
+						<td>No</td>
+						<td>[[${dto.rowNum}]]</td>
+					</tr>
+					<tr>
+						<td>식별번호</td>
+						<td><input type="hidden" name="pid" th:value="${dto.pid}">[[${dto.pid}]]</td>
+					</tr>
+					<tr>
+						<td>참조voc</td>
+						<td><input type="hidden" name="vocVid" th:value="${dto.vocVid}">
+						[[${dto.vocVid}]]</td>
+					</tr>
+					<tr>
+						<td>배송기사</td>
+						<td><input type="hidden" name="deliveryDid" th:value="${dto.deliveryDid}">[[${dto.deliveryDid}]]</td>
+					</tr>
+					<tr>
+						<td>기사확인여부</td>
+						<td>
+						<input type="radio" name="deliveryCheck" value="Y">Yes
+						<input type="radio" name="deliveryCheck" value="N">No
+						</td>
+					</tr>
+					<tr>
+						<td>이의제기여부</td>
+						<td>
+						<input type="radio" name="deliveryAgree" value="Y">Yes
+						<input type="radio" name="deliveryAgree" value="N">No
+						</td>
+					</tr>			
+					<tr>
+						<td>작성자</td>
+						<td>
+						<input type="text" name="penaltyWriter" th:value="${dto.PenaltyWriter}">
+						[[${dto.penaltyWriter}]]
+						</td>
+					</tr>
+					<tr>
+						<td>최종수정일</td>
+						<td>
+						<input type="text" name="penaltyRegdate" th:value="${dto.PenaltyRegdate}">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<input type="submit" value="저장">
+		 </form>	
+		 
+		 <a  th:href="@{/penalty/list}"><button>목록으로 돌아가기</button></a>
+	</div>
+	
+	
+	
+	</th:block>
+
+</th:block>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+</body>
+</html>

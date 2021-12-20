@@ -1,5 +1,6 @@
 package com.example.vocProject.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -23,6 +24,12 @@ public class PenaltyService {
 				,pen.getDeliveryCheck()
 				,pen.getDeliveryAgree()
 				,pen.getPenaltyWriter());
+	}
+	
+	public void updatePenalty(Penalty pen) {
+		mapper.updateSinglePenalty(pen.getPid()
+							, pen.getDeliveryCheck()
+							, pen.getDeliveryAgree());
 	}
 	
 	public void removeVoc(int pid) {

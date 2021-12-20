@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.example.vocProject.dto.Penalty;
 import com.example.vocProject.dto.Voc;
@@ -28,13 +29,21 @@ public interface PenaltyMapper {
 	
 	
 	
-	@Insert(" insert into penalty values(0,${deliveryDid},${vocVid} "
-			+ " ,'${deliveryCheck}','${deliveryAgree}','${penaltyWriter}',sysdate())")
+	@Insert(" insert into penalty values(0,${deliveryDid},${vocVid},'${deliveryCheck}','${deliveryAgree}'"
+										+ ",'${penaltyWriter}',sysdate())")
 	public void setSinglePenalty(@Param("deliveryDid")int did
-							,@Param("vocVid")int vid
-							,@Param("deliveryCheck")String check
-							,@Param("deliveryAgree")String agree
-							,@Param("penaltyWriter")String writer);
+								,@Param("vocVid")int vid
+								,@Param("deliveryCheck")String check
+								,@Param("deliveryAgree")String agree
+								,@Param("penaltyWriter")String writer);
+	
+
+	@Update(" update penalty set delivery_check = '${deliveryCheck}',"
+			+ "delivery_agree='${deliveryAgree}',penalty_regdate=sysdate() "
+			+ " where pid=${id}")
+	public void updateSinglePenalty(@Param("id")int id
+								,@Param("deliveryCheck")String check
+								,@Param("deliveryAgree")String agree);
 	
 	@Delete("delete from penalty where pid = ${id}")
 	public void deleteSinglePenalty(@Param("id") int id );

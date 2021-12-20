@@ -68,20 +68,32 @@ public class PenaltyController {
 		model.addAttribute("vid", vid);
 		model.addAttribute("did", did);
 		
-		System.out.println("vid:"+vid);
-		System.out.println("did:"+did);
-		
-		
-		
-		
 	
 		return model;
 	}
+	@GetMapping("/edit")
+	public Model PenaltyEdit(@RequestParam("pid") int pid
+							,Model model) {
+
+		Penalty pen = mapper.getSinglePenalty(pid);
+		model.addAttribute("pen", pen);	
+		return model;
+	}
+	
 	
 	@PostMapping("/insertPenalty")
 	public void insertPenalty(Penalty pen ,HttpServletResponse response) throws IOException {
-		
+	
+	System.out.println("pen:"+pen);
 	service.setSinglePenalty(pen);
+	response.sendRedirect(this.redirectUri);
+	
+	}
+	
+	@PostMapping("/updatePenalty")
+	public void updatePenalty(Penalty pen ,HttpServletResponse response) throws IOException {
+		
+	service.updatePenalty(pen);
 	response.sendRedirect(this.redirectUri);
 	
 	}

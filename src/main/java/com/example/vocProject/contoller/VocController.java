@@ -37,7 +37,7 @@ public class VocController {
 	@Autowired
 	private VocServiceImpl service ;
 	
-	String redirectUri="http://localhost:9090/voc/after-voc-list";
+	String redirectUri="http://localhost:9090/voc/before-voc-list";
 	
 	
 	

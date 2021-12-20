@@ -57,7 +57,7 @@ public class Penalty {
 	public String getPenaltyWriter() {
 		return penaltyWriter;
 	}
-	public void setPenaltyWrite(String penaltyWriter) {
+	public void setPenaltyWriter(String penaltyWriter) {
 		this.penaltyWriter = penaltyWriter;
 	}
 	public Date getPenaltyRegdate() {
