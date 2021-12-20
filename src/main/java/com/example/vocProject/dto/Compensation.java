@@ -1,6 +1,6 @@
 package com.example.vocProject.dto;
 
-public class compensation {
+public class Compensation {
 	
 	private int compenId;
 	private int vocId;

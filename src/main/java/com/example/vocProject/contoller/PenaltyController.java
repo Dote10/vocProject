@@ -84,7 +84,7 @@ public class PenaltyController {
 	@PostMapping("/insertPenalty")
 	public void insertPenalty(Penalty pen ,HttpServletResponse response) throws IOException {
 	
-	System.out.println("pen:"+pen);
+	
 	service.setSinglePenalty(pen);
 	response.sendRedirect(this.redirectUri);
 	
