@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/basic :: setContent(~{this :: content})}">
+
+	<th:block th:fragment="content">
+	
+	<div class="main-table">
+		<h1>VOC Detail</h1>
+			
+				<table border="1" cellpadding="0" cellspacing="0">
+					<tbody th:each="dto : ${voc}">
+						<tr>
+							<td>No.</td>
+							<td>[[${dto.rowNum}]]</td>
+						</tr>
+						<tr>
+							<td>식별번호</td>
+							<td>[[${dto.vid}]]</td>
+						</tr>
+						<tr>
+							<td>운송사</td>
+							<td>[[${dto.carrierCpnCaid}]]</td>
+						</tr>
+						<tr>
+							<td>고객사</td>
+							<td>[[${dto.clientCpnClid}]]</td>
+						</tr>
+						<tr>
+							<td>배송기사</td>
+							<td>[[${dto.deliveryDid}]]</td>
+						</tr>
+						<tr>
+							<td>인입여부</td>
+							<td>[[${dto.claimCheck}]]</td>
+						</tr>
+						<tr>
+							<td>배상여부</td>
+							<td>[[${dto.compensationCheck}]]</td>
+						</tr>
+						<tr>
+						<td>귀책대상</td>
+						<td>[[${dto.respTarget}]]</td>
+					</tr>
+						<tr>
+							<td>귀책내용</td>
+							<td>
+							<textarea cols="40" rows="10">[[${dto.respReason}]]</textarea>
+							</td>
+						</tr>				
+						<tr>
+							<td>비용청구 내용</td>
+							<td>[[${dto.penaltyCost}]]</td>
+						</tr>
+						<tr>
+							<td>작성자</td>
+							<td>[[${dto.vocWrite}]]</td>
+						</tr>
+						<tr>
+							<td>등록일</td>
+							<td>[[${dto.vocRegdate}]]</td>
+						</tr>
+					</tbody>
+				
+				</table>
+			</div>
+			
+			<div>
+			
+				<a  th:href="@{/voc/edit(vid=${voc.vid})}"><button>수정</button></a>
+				<input type="hidden" id="msg" th:value="${voc.vid}" >
+				<input type="hidden" id="result" th:value="${result}" >
+				<input type="hidden" id="did" th:value="${voc.deliveryDid}" >
+				<input type="button" id="getResult" value="삭제">
+				<input type="button" id="getNewPenalty" value="새 penalty 발급">
+				
+				
+				<a  th:href="@{/voc/list}"><button>목록으로 돌아가기</button></a>
+			</div>
+			
+			
+		<script>
+				$('#getResult').click(function(){
+					$.ajax({
+						url:'http://localhost:9090/voc/deleteVoc/'+$('#msg').val(),
+						datatype:'json',
+						type:'DELETE',
+						success:function(){
+							window.location.href='/voc/list';
+						}
+						
+					});
+				}),
+				$('#getNewPenalty').click(function(){
+					$.ajax({
+						url:'http://localhost:9090/penalty/post?vid='+$('#msg').val()+'&did='+$('#did').val(),
+						datatype:'json',
+						type:'GET',
+						success:function(){
+							console.log()
+							if($('#result').val()==="empty")
+					
+								window.location.href='http://localhost:9090/penalty/post?vid='+$('#msg').val()+'&did='+$('#did').val()
+							else
+								
+								alert('페넬티가 이미 발급되었습니다.');
+							
+						}
+						
+					});
+				})
+				
+		</script>
+					
+	</th:block>
+</th:block>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+</body>
+</html>

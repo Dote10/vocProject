@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/basic :: setContent(~{this :: content})}">
+
+	<th:block th:fragment="content">
+	
+	<div class="main-table">
+		<h1>Penalty List</h1>
+		
+		<table border="1" cellpadding="0" cellspacing="0" width="700">
+			<thead>
+			  <tr>
+				<th>글번호</th>
+				<th>식별번호</th>
+				<th>참조voc</th>
+				<th>기사확인 여부</th>
+				<th>이의제기 여부</th>
+				<th>작성자</th>
+				<th>최종 수정일</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr th:each="dto : ${penList}">
+			  	<td>[[${dto.rowNum}]]</td>
+			  	<td><a th:href="@{/penalty/detail(pid=${dto.pid})}">[[${dto.pid}]]</a></td>
+			  	<td>[[${dto.vocVid}]]</td>
+			  	<td>[[${dto.deliveryCheck}]]</td>
+			  	<td>[[${dto.deliveryAgree}]]</td>
+			  	<td>[[${dto.penaltyWriter}]]</td>
+			  	<td>[[${dto.penaltyRegdate}]]</td>
+			  </tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<br/>
+
+	
+	</th:block>
+
+</th:block>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+</body>
+</html>

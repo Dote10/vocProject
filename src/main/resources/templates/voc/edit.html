@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/basic :: setContent(~{this :: content})}">
+
+	<th:block th:fragment="content">
+	
+	<div class="main-table">
+	  <h1>VOC Edit</h1>
+		<form action="updateVoc" name="updateSingleVoc" method="post">
+			<table border="1" cellpadding="0" cellspacing="0">
+				<tbody th:each="dto : ${voc}">
+					<tr>
+						<td>No</td>
+						<td>[[${dto.rowNum}]]</td>
+					</tr>
+					<tr>
+						<td>식별번호</td>
+						<td><input type="hidden" name="vid" th:value="${dto.vid}">[[${dto.vid}]]</td>
+					</tr>
+					<tr>
+						<td>운송사</td>
+						<td><input type="hidden" name="carrierCpnCaid" th:value="${dto.carrierCpnCaid}">[[${dto.carrierCpnCaid}]]</td>
+					</tr>
+					<tr>
+						<td>고객사</td>
+						<td><input type="hidden" name="clientCpnClid" th:value="${dto.clientCpnClid}">[[${dto.clientCpnClid}]]</td>
+					</tr>
+					<tr>
+						<td>배송기사</td>
+						<td><input type="hidden" name="deliveryDid" th:value="${dto.deliveryDid}">[[${dto.deliveryDid}]]</td>
+					</tr>
+					<tr>
+						<td>클레임 인입여부</td>
+						<td>
+						<input type="radio" name="claimCheck" value="Y">Yes
+						<input type="radio" name="claimCheck" value="N">No
+						</td>
+					</tr>
+					<tr>
+						<td>배상여부</td>
+						<td>
+						<input type="radio" name="compensationCheck" value="Y">Yes
+						<input type="radio" name="compensationCheck" value="N">No
+						</td>
+					</tr>
+					<tr>
+						<td>귀책대상</td>
+						<td>
+						<input type="text" name="respTarget"  th:value="${dto.respTarget}">
+						</td>
+					</tr>
+					<tr>
+						<td>귀책내용</td>
+						<td>
+						<textarea name="respReason" cols="40" rows="10">[[${dto.respReason}]]</textarea>
+						</td>
+					</tr>				
+					<tr>
+						<td>배상금액</td>
+						<td><input type="text" name=penaltyCost th:value="${dto.penaltyCost}"></td>
+					</tr>
+					<tr>
+						<td>작성자</td>
+						<td>
+						<input type="text" name="vocWrite" th:value="${dto.vocWrite}">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<input type="submit" value="저장">
+		 </form>	
+		 
+		 <a  th:href="@{/voc/list}"><button>목록으로 돌아가기</button></a>
+	</div>
+	
+	
+	
+	</th:block>
+
+</th:block>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+</body>
+</html>

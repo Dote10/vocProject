@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/basic :: setContent(~{this :: content})}">
+
+	<th:block th:fragment="content">
+	
+	<div class="main-table">
+		<h1>Before VOC List</h1>
+		
+		<table border="1" cellpadding="0" cellspacing="0" width="700">
+			<thead>
+			  <tr>
+				<th>글번호</th>
+				<th>식별번호</th>
+				<th>귀책대상</th>
+				<th>작성자</th>
+				<th>등록일</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr th:each="dto : ${vocList}">
+			  	<td>[[${dto.rowNum}]]</td>
+			  	<td><a th:href="@{/voc/detail(vid=${dto.vid})}">[[${dto.vid}]]</a></td>
+			  	<td>[[${dto.respTarget}]]</td>
+			  	<td>[[${dto.vocWrite}]]</td>
+			  	<td>[[${dto.vocRegdate}]]</td>
+			  </tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<br/>
+	
+	<div>
+		
+		<a th:href="@{/voc/post}"><button>새 voc 등록</button></a>
+	
+	</div>
+	
+	</th:block>
+
+</th:block>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+</body>
+</html>

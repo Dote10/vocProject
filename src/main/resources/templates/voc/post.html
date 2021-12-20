@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/basic :: setContent(~{this :: content})}">
+
+	<th:block th:fragment="content">
+	
+	<div class="main-table">
+	  <h1>VOC Post</h1>
+		<form action="insertVoc" method="post">
+			<table border="1" cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr>
+						<td>운송사</td>
+						<td>
+						<input type="radio" name="carrierCpnCaid" value="101">운송사1
+						<input type="radio" name="carrierCpnCaid" value="102">운송사2
+						<input type="radio" name="carrierCpnCaid" value="103">운송사3
+						</td>
+					</tr>
+					<tr>
+						<td>고객사</td>
+						<td>
+						<input type="radio" name="clientCpnClid" value="501">고객사1
+						<input type="radio" name="clientCpnClid" value="502">고객사2
+						<input type="radio" name="clientCpnClid" value="503">고객사3
+						</td>
+					</tr>
+					<tr>
+						<td>배송기사</td>
+						<td><input type="text" name="deliveryDid" ></td>
+					</tr>
+					<tr>
+						<td>클레임 인입여부</td>
+						<td>
+						<input type="radio" name="claimCheck" value="Y">Yes
+						<input type="radio" name="claimCheck" value="N">No
+						</td>
+					</tr>
+					<tr>
+						<td>배상여부</td>
+						<td>
+						<input type="radio" name="compensationCheck" value="Y">Yes
+						<input type="radio" name="compensationCheck" value="N">No
+						</td>
+					</tr>
+					<tr>
+						<td>귀책대상</td>
+						<td>
+						<input type="text" name="respTarget"  >
+						</td>
+					</tr>
+					<tr>
+						<td>귀책내용</td>
+						<td>
+						<textarea cols="40" rows="10" name="respReason"></textarea>
+						</td>
+					</tr>				
+					<tr>
+						<td>배상금액</td>
+						<td><input type="text" name=penaltyCost></td>
+					</tr>
+					<tr>
+						<td>작성자</td>
+						<td>
+						<input type="text" name="vocWrite">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<input type="submit" value="저장">
+		 </form>	
+		 	<a  th:href="@{/voc/list}"><button>목록으로 돌아가기</button></a>
+	</div>
+	
+	
+	
+	</th:block>
+
+</th:block>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+</body>
+</html>
