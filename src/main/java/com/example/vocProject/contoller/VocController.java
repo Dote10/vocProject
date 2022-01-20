@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.vocProject.dto.PenaltyVoc;
 import com.example.vocProject.dto.Voc;
 import com.example.vocProject.dto.VocListView;
-import com.example.vocProject.mapper.VocMapper;
+import com.example.vocProject.repoaitory.VocRepository;
 import com.example.vocProject.service.VocService;
 import com.example.vocProject.service.VocServiceImpl;
 
@@ -32,7 +32,7 @@ import com.example.vocProject.service.VocServiceImpl;
 public class VocController {
 
 	@Autowired
-	private VocMapper vocMapper;
+	private VocRepository vocMapper;
 	
 	@Autowired
 	private VocServiceImpl service ;

@@ -1,4 +1,4 @@
-package com.example.vocProject.mapper;
+package com.example.vocProject.repoaitory;
 
 
 import java.util.List;
@@ -15,7 +15,7 @@ import com.example.vocProject.dto.Voc;
 import com.example.vocProject.dto.VocListView;
 
 @Mapper
-public interface VocMapper {
+public interface VocRepository {
 	
 	
 	@Select(" select @ROWNUM := @ROWNUM+1 AS row_num, v.* "

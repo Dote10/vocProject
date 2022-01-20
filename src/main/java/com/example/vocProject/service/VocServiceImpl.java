@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.vocProject.dto.Voc;
 import com.example.vocProject.dto.VocListView;
-import com.example.vocProject.mapper.VocMapper;
+import com.example.vocProject.repoaitory.VocRepository;
 
 @Transactional
 @Service
@@ -24,11 +24,11 @@ public class VocServiceImpl implements VocService {
 	
 
 	@Autowired
-	VocMapper vocMapper;
+	VocRepository vocRepository;
 	
 	public void setSingleVoc(Voc voc) {
 		
-		vocMapper.setSingleVoc(voc.getCarrierCpnCaid()
+		vocRepository.setSingleVoc(voc.getCarrierCpnCaid()
 				  ,voc.getClientCpnClid()
 				  ,voc.getDeliveryDid()
 				  ,voc.getClaimCheck()
@@ -41,7 +41,7 @@ public class VocServiceImpl implements VocService {
 	
 	public void updateSingleVoc(Voc voc) {
 		
-		vocMapper.updateSingleVoc(voc.getVid()  
+		vocRepository.updateSingleVoc(voc.getVid()  
 				  ,voc.getCarrierCpnCaid()
 				  ,voc.getClientCpnClid()
 				  ,voc.getDeliveryDid()
@@ -55,7 +55,7 @@ public class VocServiceImpl implements VocService {
 	
 	public void removeVoc(int vid) {
 		
-		vocMapper.deleteSingleVoc(vid);
+		vocRepository.deleteSingleVoc(vid);
 	}
 	
 
@@ -63,7 +63,7 @@ public class VocServiceImpl implements VocService {
 	
 		
 		
-		int check = vocMapper.isCheckPenalty(vid);
+		int check = vocRepository.isCheckPenalty(vid);
 		
 		System.out.println("check:"+check);
 		if(check == 0)  

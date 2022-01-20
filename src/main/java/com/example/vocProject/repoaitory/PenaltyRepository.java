@@ -1,4 +1,4 @@
-package com.example.vocProject.mapper;
+package com.example.vocProject.repoaitory;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import com.example.vocProject.dto.Penalty;
 import com.example.vocProject.dto.Voc;
 
 @Mapper
-public interface PenaltyMapper {
+public interface PenaltyRepository {
 
 	@Select(" select @ROWNUM := @ROWNUM+1 AS row_num, p.* "
 			+ " from penalty p,(select @ROWNUM:=0) temp "

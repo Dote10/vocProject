@@ -1,3 +1,5 @@
+
+
 package com.example.vocProject.dto;
 
 public class Compensation {

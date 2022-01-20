@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.vocProject.dto.Penalty;
 import com.example.vocProject.dto.Voc;
 import com.example.vocProject.dto.VocListView;
-import com.example.vocProject.mapper.PenaltyMapper;
-import com.example.vocProject.mapper.VocMapper;
+import com.example.vocProject.repoaitory.PenaltyRepository;
+import com.example.vocProject.repoaitory.VocRepository;
 import com.example.vocProject.service.PenaltyService;
 import com.example.vocProject.service.VocServiceImpl;
 
@@ -30,7 +30,7 @@ public class PenaltyController {
 	private PenaltyService service;
 	
 	@Autowired
-	private PenaltyMapper mapper;
+	private PenaltyRepository mapper;
 	
 	
 	String redirectUri="http://localhost:9090/penalty/list";
