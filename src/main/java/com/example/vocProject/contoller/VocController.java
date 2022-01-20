@@ -44,7 +44,7 @@ public class VocController {
 	@GetMapping("/before-voc-list")
 	public Model vocList(Model model) {
 		
-		List<Voc> vocList = vocMapper.findVocList();
+		List<Voc> vocList = service.findVocList();
 		
 		
 		model.addAttribute("vocList", vocList);
@@ -55,7 +55,7 @@ public class VocController {
 	@GetMapping("/after-voc-list")
 	public Model penaltyVocList(Model model) {
 		
-		List<VocListView> vocList = vocMapper.penaltyVocList();
+		List<VocListView> vocList = service.findPenaltyVocList();
 		
 	
 		model.addAttribute("vocList", vocList);
@@ -65,9 +65,9 @@ public class VocController {
 	
 	
 	@GetMapping("/detail")
-	public Model getSigleVoc(@RequestParam("vid") int vid, Model model ) {
+	public Model SigleVoc(@RequestParam("vid") int vid, Model model ) {
 	
-		Voc voc = vocMapper.getSingleVoc(vid);
+		Voc voc = service.getSigleVoc(vid);
 		model.addAttribute("voc", voc);	
 		
 		if(service.PenaltyPost(vid).equals("empty")) 
@@ -79,9 +79,9 @@ public class VocController {
 	}
 	
 	@GetMapping("/after-detail")
-	public Model getAfterVoc(@RequestParam("vid") int vid, Model model ) {
+	public Model AfterVoc(@RequestParam("vid") int vid, Model model ) {
 	
-		PenaltyVoc penVoc = vocMapper.getpenaltyVoc(vid);
+		PenaltyVoc penVoc = service.getAfterVoc(vid);
 		model.addAttribute("penVoc", penVoc);	
 		
 	
@@ -94,7 +94,7 @@ public class VocController {
 	@GetMapping("/edit")
 	public Model vocEdit(@RequestParam("vid") int vid, Model model) {
 	
-		Voc voc = vocMapper.getSingleVoc(vid);
+		Voc voc = service.getvocEdit(vid);
 		model.addAttribute("voc", voc);	
 		
 		

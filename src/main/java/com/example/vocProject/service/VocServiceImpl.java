@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.vocProject.dto.PenaltyVoc;
 import com.example.vocProject.dto.Voc;
 import com.example.vocProject.dto.VocListView;
 import com.example.vocProject.repoaitory.VocRepository;
@@ -25,6 +26,44 @@ public class VocServiceImpl implements VocService {
 
 	@Autowired
 	VocRepository vocRepository;
+	
+	
+	public List<Voc> findVocList() {
+		
+		List<Voc> vocList = vocRepository.findVocList();
+		
+		return vocList;
+	}
+	
+	public List<VocListView> findPenaltyVocList() {
+		
+		List<VocListView> vocList = vocRepository.penaltyVocList();
+		
+		return vocList;
+	}
+	
+	
+	public Voc getSigleVoc( int vid) {
+		
+		Voc voc = vocRepository.getSingleVoc(vid);
+		return voc;
+	}
+	
+	public PenaltyVoc getAfterVoc(int vid) {
+		
+		PenaltyVoc penVoc = vocRepository.getpenaltyVoc(vid);
+		
+		return penVoc;
+	}
+	
+	
+	public Voc getvocEdit(int vid) {
+	
+		Voc voc = vocRepository.getSingleVoc(vid);	
+		
+		return voc;
+	}
+	
 	
 	public void setSingleVoc(Voc voc) {
 		
