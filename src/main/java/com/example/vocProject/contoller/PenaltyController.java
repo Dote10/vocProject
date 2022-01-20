@@ -29,9 +29,7 @@ public class PenaltyController {
 	@Autowired
 	private PenaltyService service;
 	
-	@Autowired
-	private PenaltyRepository mapper;
-	
+
 	
 	String redirectUri="http://localhost:9090/penalty/list";
 	
@@ -39,7 +37,7 @@ public class PenaltyController {
 	@GetMapping("/list")
 	public Model penaltyList(Model model) {
 		
-		List<Penalty> penList = mapper.findPenaltyList();
+		List<Penalty> penList = service.findPenaltyList();
 		
 		
 		model.addAttribute("penList",penList );
@@ -48,9 +46,9 @@ public class PenaltyController {
 	}
 	
 	@GetMapping("/detail")
-	public Model getSigleVoc(@RequestParam("pid") int pid, Model model ) {
+	public Model SiglePenalty(@RequestParam("pid") int pid, Model model ) {
 	
-		Penalty penalty = mapper.getSinglePenalty(pid);
+		Penalty penalty = service.getSiglePenalty(pid);
 		model.addAttribute("penalty", penalty );	
 		
 	
@@ -63,19 +61,18 @@ public class PenaltyController {
 							,@RequestParam("did") int did
 							,Model model) {
 	
-		
-
 		model.addAttribute("vid", vid);
 		model.addAttribute("did", did);
 		
-	
 		return model;
 	}
+	
+	
 	@GetMapping("/edit")
 	public Model PenaltyEdit(@RequestParam("pid") int pid
 							,Model model) {
 
-		Penalty pen = mapper.getSinglePenalty(pid);
+		Penalty pen = service.getPenaltyEdit(pid);
 		model.addAttribute("pen", pen);	
 		return model;
 	}

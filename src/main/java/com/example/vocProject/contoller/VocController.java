@@ -31,8 +31,6 @@ import com.example.vocProject.service.VocServiceImpl;
 @RequestMapping("/voc")
 public class VocController {
 
-	@Autowired
-	private VocRepository vocMapper;
 	
 	@Autowired
 	private VocServiceImpl service ;
